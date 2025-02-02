@@ -1,0 +1,13 @@
+<p>auth works!</p>
+<div class="flex-box">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink [routerLink]="['/auth', 'login']">Login</button>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink [routerLink]="['/auth', 'register']">Register</button>
+    </li>
+  </ul>
+  <!-- <div [ngbNavOutlet]="nav" class="mt-2"></div> -->
+  <router-outlet></router-outlet>
+</div>
