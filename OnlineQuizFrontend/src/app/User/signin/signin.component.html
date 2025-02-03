@@ -1,1 +1,38 @@
-<p>signin works!</p>
+<div>
+  <h1>Login For Online Quiz</h1>
+  <hr />
+  <form
+    name="form"
+    (ngSubmit)="f.form.valid && signin(f)"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="mb-3">
+      <label for="username">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="username"
+        name="username"
+        ngModel
+        #username="ngModel"
+        required
+      />
+      <div class="" *ngIf="f.submitted && !username.valid">
+        Username is required
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+      />
+    </div>
+  </form>
+</div>

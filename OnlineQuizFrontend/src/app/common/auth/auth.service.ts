@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 export type position = 'User' | 'Admin' | 'Read' | 'Write';
 
 export interface ISignIn {
-  userName: string;
+  username: string;
   password: string;
-  roles: position;
+  roles: position[];
 }
 
 @Injectable({
@@ -16,7 +16,7 @@ export class AuthService {
   private readonly AUTH_KEY = 'auth';
   private apiUrl = `https://localhost:7281/api/Auth`;
   constructor(private http: HttpClient) {}
-  signin(credentials: ISignIn) {
+  register(credentials: ISignIn) {
     return this.http.post<string>(`${this.apiUrl}/Register`, credentials, {
       responseType: 'text' as 'json',
     });
