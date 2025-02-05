@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService, ILogIn } from '../../common/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -10,7 +11,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './signin.component.scss',
 })
 export class SigninComponent implements OnInit {
-  constructor() {}
+  credentials!: ILogIn;
+  constructor(private auth: AuthService) {}
   ngOnInit(): void {}
-  signin(form: NgForm) {}
+  signin(form: NgForm) {
+    this.credentials = { ...form.value };
+    this.auth.login(this.credentials).subscribe({
+      next: (loggedinUser) => {
+        console.log(loggedinUser);
+        //console.log(this.auth.getRole());
+      },
+    });
+  }
 }
