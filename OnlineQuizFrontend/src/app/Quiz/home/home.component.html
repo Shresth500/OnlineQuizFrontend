@@ -1,0 +1,79 @@
+<h1>Online Quizz</h1>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="isNavbarCollapsed = !isNavbarCollapsed"
+        aria-controls="navbarNav"
+        aria-expanded="!isNavbarCollapsed"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        id="navbarNav"
+        [ngbCollapse]="isNavbarCollapsed"
+        class="collapse navbar-collapse"
+      >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Quizzes List</a
+            >
+          </li>
+          <li *ngIf="getRole() == 'Admin'">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/add"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              Add a Quiz
+            </a>
+          </li>
+          <li *ngIf="getRole() == 'User'">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/profile"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              Profile
+            </a>
+          </li>
+          <li *ngIf="getRole() == 'User'">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/quizNotTaken"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              Quiz Not Taken
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              ngbDropdownItem
+              routerLink="/auth/login"
+              (click)="logout()"
+            >
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<router-outlet></router-outlet>

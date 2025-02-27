@@ -1,1 +1,17 @@
-<p>quiz works!</p>
+<div>
+  <h2>Quizz List</h2>
+  <div>
+    <div ngbAccordion class="custom-accordion">
+      <div ngbAccordionItem *ngFor="let val of data; let i = index">
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>{{ val.title }}</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <p>{{ val.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

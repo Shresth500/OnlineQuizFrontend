@@ -1,0 +1,7 @@
+<p>profile works!</p>
+<div>
+  <div>{{ data.userName }}</div>
+  <div *ngFor="let val of data.attendee; let i = index">
+    <div>{{ val.quizzesId }}</div>
+  </div>
+</div>
